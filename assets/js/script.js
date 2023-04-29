@@ -4,16 +4,15 @@ var initCurrQS = 1;
 $(document).ready(function () {
 
 	$("#view-rs").on("click", function () {
-		console.log("các", initCurrQS);
-		$(`#tip-${initCurrQS}`).toggleClass('hide')
-		// console.log($(`#tip-${initCurrQS}`).parent().find('.right').toggleClass('prs'));
+		let tip = $(`#tip-${initCurrQS}`);
+		tip.toggleClass('hide');
+		tip.parent().find('.prs').removeClass('prs');
 	});
 
 	$("#next-qs").on("click", function () {
 		if (initCurrQS <= 600) {
 			initCurrQS++;
 			resetLoad();
-			// console.log(initCurrQS)
 		}
 	});
 
@@ -21,18 +20,26 @@ $(document).ready(function () {
 		if (initCurrQS > 1) {
 			initCurrQS--;
 			resetLoad();
-			// console.log(initCurrQS)
 		}
 	});
 
+	$("body").delegate("p.ans-radio", "click", function () {
+
+		if (!$(this).hasClass('right')) {
+			$(this).toggleClass('choose-wrong');
+		}
+		let tip = $(`#tip-${initCurrQS}`);
+		tip.toggleClass('hide');
+		tip.parent().find('.prs').removeClass('prs');
+
+	});
 
 	$("form").on("submit", function (e) {
 		e.preventDefault();
 
-		if (initCurrQS > 0 && initCurrQS < 601 ) {
+		if (initCurrQS > 0 && initCurrQS < 601) {
 			initCurrQS = $("input[name=question").val();
 			resetLoad();
-			// console.log(initCurrQS)
 		}
 	});
 
@@ -58,10 +65,11 @@ $(document).ready(function () {
 function getAnsHtml(ans) {
 	let anws = ""
 	$.each(ans, function (k, a) {
+		idx = ++k;
 		if (a.correct) {
-			anws += `<p class="right prs">${++k}. ${a.text}</p>`;
+			anws += `<p class="ans-radio right prs">💍 ${idx}. ${a.text}</p>`;
 		} else {
-			anws += `<p class="wrong">${++k}. ${a.text}</p>`;
+			anws += `<p class="ans-radio wrong prs">💍 ${idx}. ${a.text}</p>`;
 		}
 	});
 	return anws;
@@ -77,7 +85,7 @@ function getTipHtml(tip) {
 function getImgHtml(img) {
 	let url = '//gplx.app/images/questions';
 	if (img != "") {
-		return `<img class="img" src="${url}/${img}" />`
+		// return `<img class="img" src="${url}/${img}" />`
 	}
 	return ""
 }
