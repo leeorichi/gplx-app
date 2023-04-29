@@ -85,7 +85,7 @@ function getTipHtml(tip) {
 function getImgHtml(img) {
 	let url = '//gplx.app/images/questions';
 	if (img != "") {
-		// return `<img class="img" src="${url}/${img}" />`
+		return `<img class="img" src="${url}/${img}" />`
 	}
 	return ""
 }
