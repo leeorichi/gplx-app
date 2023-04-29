@@ -12,7 +12,8 @@ body {
 
 .question {
     font-weight: bold;
-    color: #058cffeb;
+    /* color: #058cffeb; */
+    color: #ff0505;
     font-size: 23px;
 }
 
@@ -27,7 +28,7 @@ img.img {
 }
 
 span.tip {
-    color: violet;
+    color: #00ac43;
 }
 
 .hide {
@@ -71,9 +72,16 @@ span.tip {
 
 
 .home {
-    /* width : 31%; */
+    width : 59%;
 }
 
+a#pre-qs {
+    width: 20%;
+}
+
+a#next-qs {
+    width: 20%;
+}
 
 input[type="number"] {
     width: 30px;
@@ -110,3 +118,7 @@ form {
     -webkit-appearance:radio;
     content: "";
 }
+
+hr {
+    border-top: 1px dashed red;
+  }

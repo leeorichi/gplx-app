@@ -1,8 +1,8 @@
 var html = "";
-var initCurrQS = 1;
+var initCurrQS = ($.cookie('lastQsn'))? $.cookie('lastQsn') : 1;
 
 $(document).ready(function () {
-
+	// lastQuest();
 	$("#view-rs").on("click", function () {
 		let tip = $(`#tip-${initCurrQS}`);
 		tip.toggleClass('hide');
@@ -24,14 +24,14 @@ $(document).ready(function () {
 	});
 
 	$("body").delegate("p.ans-radio", "click", function () {
-
 		if (!$(this).hasClass('right')) {
+			saveState();
 			$(this).toggleClass('choose-wrong');
 		}
 		let tip = $(`#tip-${initCurrQS}`);
 		tip.toggleClass('hide');
 		tip.parent().find('.prs').removeClass('prs');
-
+		lastQuest();
 	});
 
 	$("form").on("submit", function (e) {
@@ -67,10 +67,11 @@ function getAnsHtml(ans) {
 	$.each(ans, function (k, a) {
 		idx = ++k;
 		if (a.correct) {
-			anws += `<p class="ans-radio right prs">💍 ${idx}. ${a.text}</p>`;
+			anws += `<p class="ans-radio right prs">⭕️ ${idx}. ${a.text}</p>`;
 		} else {
-			anws += `<p class="ans-radio wrong prs">💍 ${idx}. ${a.text}</p>`;
+			anws += `<p class="ans-radio wrong prs">⭕️ ${idx}. ${a.text}</p>`;
 		}
+		anws += "<hr>";
 	});
 	return anws;
 }
@@ -95,4 +96,27 @@ function resetLoad() {
 	$(".item").addClass('hide');
 	$(`#${initCurrQS}`).toggleClass('hide');
 	$("input[name=question").attr('value', initCurrQS);
+}
+
+function lastQuest() {
+	if ($.cookie('lastQsn') == "") {
+		initCurrQS = 1;
+	}else{
+		// initCurrQS = $.cookie('lastQsn')
+		$.cookie('lastQsn', initCurrQS, { expires: 365 });
+	}
+	console.log( $.cookie('lastQsn'), initCurrQS)
+}
+
+function saveState() {
+	let listQsWrong = $.cookie('listQsWrong');
+	let arrFromCookie = listQsWrong ? JSON.parse(listQsWrong) : [];
+	arrFromCookie.push(initCurrQS);
+	const uniqueArr = arrFromCookie.filter(onlyUnique);
+
+	$.cookie('listQsWrong', JSON.stringify(uniqueArr), { expires: 365 });
+}
+
+function onlyUnique(value, index, self) {
+	return self.indexOf(value) === index;
 }
