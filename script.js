@@ -1,26 +1,20 @@
 var html = "";
 $(document).ready(function() {
-		stop = 0;
+	$.each(originalQuestions, function(key, qs) {
+		html += `
+		<div class="item" id="${++key}">
+			<h3 class="question" id="ques-${key}">Câu ${key} : ${qs.text}</h3>
 
-		$.each(originalQuestions, function(key, qs) {
-			html += `
-			<div class="item" id="${++key}">
-				<h3 class="question" id="ques-${++key}">Câu ${key} : ${qs.text}</h3>
-				
-				<span id="tip-${key}">			${getTipHtml(qs.tip)}			</span>
-				<p id="img-${key}">			${getImgHtml(qs.image)}			</p>
+			<span id="tip-${key}">			${getTipHtml(qs.tip)}			</span>
+			<p id="img-${key}">			${getImgHtml(qs.image)}			</p>
 
-				<div class="answer">
-					${getAnsHtml(qs.answers)}
-				</div>
+			<div class="answer">
+				${getAnsHtml(qs.answers)}
 			</div>
-			<hr>`;
-
-			if (++stop == 50){
-				return;
-			}
-		});
-		$("#content").html(html);
+		</div>
+		<hr>`;
+	});
+	$("#content").html(html);
 });
 
 
