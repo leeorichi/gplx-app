@@ -2,48 +2,49 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>600 câu hỏi thi sát hạch lái xe</title>
-    <meta name="description" content="Ôn thi GPLX">
-    <meta property="og:title" content="Ôn thi GPLX">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="icon.png">
-    <meta property="og:description" content="Ôn thi bằng lái xe máy, môtô, xe hơi, xe tải, xe khách tất cả các hạng A1, A2, A3, A4, B1, B2, C, D, E, F theo bộ đề mới nhất của Cục đường bộ Việt Nam 2020">
-    <meta name="robots" content="index">
-	
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="init.js"></script>
-	<style>
-		.item {
-			padding-top: 15px;
-			padding-bottom: 30px;
-		}
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>600 câu hỏi thi sát hạch lái xe</title>
+	<meta name="description" content="Ôn thi GPLX">
+	<meta property="og:title" content="Ôn thi GPLX">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="/assets/images/icon.png">
+	<meta property="og:description"
+		content="Ôn thi bằng lái xe máy, môtô, xe hơi, xe tải, xe khách tất cả các hạng A1, A2, A3, A4, B1, B2, C, D, E, F theo bộ đề mới nhất của Cục đường bộ Việt Nam 2020">
+	<meta name="robots" content="index">
 
-		.question {
-			font-weight: bold;
-			color: #058cffeb;
-		}
-
-		p.right {
-			color: #00b300;
-			font-weight: bold;
-		}
-
-		img.img {
-			align-items: center;
-			width: 100%;
-		}
-
-		span.tip {
-			color: violet;
-		}
-	</style>
+	<link href="/assets/styles/styles.css" rel="stylesheet">
+	<script src="/assets/js/init.js"></script>
+	<script src="/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+
+	<div>
+		<form action="/" method="get" name="goto-quest">
+			<input type="number" name="question" value="1"   min="1" max="600" width="30px"> 
+			<span style="color: red">/ 600</span>
+			<input type="submit" name="goto-question" id="goto" value="Đi đến">
+		</form>
+
+		 <!-- <img class="goto" height="50px" src="/assets/images/submit.png" alt="Đi đến câu hỏi" > -->
+	</div>
+
 	<div id="content"></div>
-	<script src="script.js"></script>
+	<div class="navbar">
+		<a href="#pre" class="left" id="pre-qs">
+			<img src="/assets/images/left-left.png" height="25px" />
+		</a>
+
+		<a href="/list.html"  class="home">Danh Sách</a>
+		<a  id="view-rs" class="aws">Xem Đáp án</a>
+
+		<a href="#next" class="right" id="next-qs">
+			<img src="/assets/images/left-right.png" height="25px" />
+		</a>
+	</div>
+
 </body>
+<script src="/assets/js/script.js"></script>
 
 </html>

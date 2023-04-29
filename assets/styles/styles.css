@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.item {
+    padding: 10px;
+    /* padding-top: 15px; */
+    /* padding-bottom: 30px; */
+}
+
+.question {
+    font-weight: bold;
+    color: #058cffeb;
+}
+
+p.right {
+    color: #00b300;
+    font-weight: bold;
+}
+
+img.img {
+    align-items: center;
+    width: 100%;
+}
+
+span.tip {
+    color: violet;
+}
+
+.hide {
+    display: none;
+}
+
+.prs {
+    color: black !important;
+    font-weight: unset !important;
+}
+
+/* Bottom Navibar */
+.navbar {
+    overflow: hidden;
+    /* background-color: #333; */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #00c1af;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    background: #00bba7;
+    color: white;
+}
+
+.navbar a.active {
+    /* background-color: #04AA6D; */
+    color: white;
+}
+
+
+.home {
+    width : 31%;
+}
+
+
+input[type="number"] {
+    width: 30px;
+}
+
+
+img.goto {
+    float: left;
+    margin-right: 9px;
+}
+.box {
+    border: 0.1em solid;
+    overflow: hidden
+}
+
+form {
+    /* background: #ada3cd; */
+    margin: 5px;
+    right: 1px;
+    position: fixed;
+}
